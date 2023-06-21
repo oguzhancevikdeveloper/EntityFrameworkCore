@@ -71,6 +71,24 @@ public partial class MasterContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=192.168.1.56;Database=master;User Id=frostline_adm;Password=dUT1@swl;TrustServerCertificate=True; Integrated Security =false;");
+    //Provider
+    //ConnectionString
+    //Lazy Loading 
+    //vb.
+
+
+
+    #region OnConfiguring İle Konfigürasyon Ayarlarını Gerçekleştirmek
+    //EF Core tool'unu yapılandırmak için kullandığımız bir metottur.
+    //Context nesnesinde override edilerek kullanılmaktadır.
+    #endregion
+    #region Basit Düzeyde Entity Tanımlama Kuralları
+    //EF Core, her tablonun default olarak bir primary key kolonu olması gerektiğini kabul eder!
+    //Haliyle, bu kolonu temsil eden bir property tanımlamadığımız taktirde hata verecektir!
+    #endregion
+    #region Tablo Adını Belirleme
+    #endregion
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
