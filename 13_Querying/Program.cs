@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 MasterContext context = new();
-Product? product33 = await context.Products.FindAsync(4, 2);
+
 #region En Temel Basit Bir Sorgulama Nasıl Yapılır?
 #region Method Syntax
 var products = await context.Products.ToListAsync();
@@ -219,12 +219,13 @@ var product28 = await context.Products.FirstAsync(u => u.ProductId > 55);
 #endregion
 
 #region FindAsync
-//Find fonksiyonu, primary key kolonuna özel hızlı bir şekilde sorgulama yapmamızı sağlayan bir fonksiyondur.
+//Find fonksiyonu, primary key kolonuna özel hızlı bir şekilde sorgulama yapmamızı sağlayan bir fonksiyondur. 
+// Hızlı yapıyor çünkü contexten önce memorye bakıyor.
 Product? product29 = await context.Products.FirstOrDefaultAsync(u => u.ProductId == 55);
 Product? product32 = await context.Products.FindAsync(keyValues:55);
 
 #region Composite Primary key Durumu
-
+Product? product33 = await context.Products.FindAsync(4, 2);
 
 #endregion
 #endregion
@@ -235,12 +236,12 @@ Product? product32 = await context.Products.FindAsync(keyValues:55);
 
 #region LastAsync
 //Sorgu neticesinde gelen verilerden en sonuncusunu getirir. Eğer ki hiç veri gelmiyorsa hata fırlatır. OrderBy kullanılması mecburidir.
-//var urun = await context.Urunler.OrderBy(u => u.Fiyat).LastAsync(u => u.Id > 55);
+var product34 = await context.Products.OrderBy(u => u.UnitPrice).LastAsync(u => u.ProductId > 55);
 #endregion
 
 #region LastOrDefaultAsync
 //Sorgu neticesinde gelen verilerden en sonuncusunu getirir. Eğer ki hiç veri gelmiyorsa null döner. OrderBy kullanılması mecburidir.
-//var urun = await context.Urunler.OrderBy(u => u.Fiyat).LastOrDefaultAsync(u => u.Id > 55);
+var product35 = await context.Products.OrderBy(u => u.UnitPrice).LastOrDefaultAsync(u => u.ProductId > 55);
 #endregion
 #endregion
 
@@ -250,7 +251,7 @@ Product? product32 = await context.Products.FindAsync(keyValues:55);
 //var urunler = (await context.Urunler.ToListAsync()).Count();
 //var urunler = await context.Urunler.CountAsync();
 #endregion
-
+  
 #region LongCountAsync
 //Oluşturulan sorgunun execute edilmesi neticesinde kaç adet satırın elde edileceğini sayısal olarak(long) bizlere bildiren fonksiyondur.
 //var urunler = await context.Urunler.LongCountAsync(u => u.Fiyat > 5000);
