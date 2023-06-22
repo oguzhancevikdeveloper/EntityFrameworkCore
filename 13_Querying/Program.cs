@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 
 MasterContext context = new();
-
+Product? product33 = await context.Products.FindAsync(4, 2);
 #region En Temel Basit Bir Sorgulama Nasıl Yapılır?
 #region Method Syntax
 var products = await context.Products.ToListAsync();
 #endregion
 #region Query Syntax
-var products2 = await (from urun in context.Products
-                      select urun).ToListAsync();
+var products2 = await (from urun7 in context.Products
+                      select urun7).ToListAsync();
 #endregion
 #endregion
 
@@ -20,24 +20,24 @@ var products2 = await (from urun in context.Products
 var products3 = await context.Products.ToListAsync();
 #endregion
 #region Query Syntax
-var products4 = await (from urun in context.Products
-select urun).ToListAsync();
+var products4 = await (from urun2 in context.Products
+select urun2).ToListAsync();
 #endregion
 #endregion
 
 int urunId = 5;
 string urunAdi = "2";
 
-var products5 = from urun in context.Products
-              where urun.ProductId > urunId && urun.ProductName.Contains(urunAdi)
-              select urun;
+var products5 = from urun3 in context.Products
+              where urun3.ProductId > urunId && urun3.ProductName.Contains(urunAdi)
+              select urun3;
 
 urunId = 200;
 urunAdi = "4";
 
-foreach (Product urun in products5)
+foreach (Product urun4 in products5)
 {
-    Console.WriteLine(urun.ProductName);
+    Console.WriteLine(urun4.ProductName);
 }
 
 await products5.ToListAsync();
@@ -106,9 +106,9 @@ var products10 = await context.Products.Where(u => u.ProductName.StartsWith("a")
 Console.WriteLine();
 #endregion
 #region Query Syntax
-var products11 = from urun in context.Products
-              where urun.ProductId > 500 && urun.ProductName.EndsWith("A")
-              select urun;
+var products11 = from urun5 in context.Products
+              where urun5.ProductId > 500 && urun5.ProductName.EndsWith("A")
+              select urun5;
 var data = await products11.ToListAsync();
 Console.WriteLine();
 #endregion
@@ -164,26 +164,26 @@ var products17 = await context.Products.OrderByDescending(u => u.ProductId).Then
 #region SingleAsync
 //Eğer ki, sorgu neticesinde birden fazla veri geliyorsa ya da hiç gelmiyorsa her iki durumda da exception fırlatır.
 #region Tek Kayıt Geldiğinde
-//var urun = await context.Urunler.SingleAsync(u => u.Id == 55);
+var product18 = await context.Products.SingleAsync(u => u.ProductId == 55);
 #endregion
 #region Hiç Kayıt Gelmediğinde
-//var urun = await context.Urunler.SingleAsync(u => u.Id == 5555);
+var product19 = await context.Products.SingleAsync(u => u.ProductId == 5555);
 #endregion
 #region Çok Kayıt Geldiğinde
-//var urun = await context.Urunler.SingleAsync(u => u.Id > 55);
+var urun = await context.Products.SingleAsync(u => u.ProductId > 55);
 #endregion
 #endregion
 
 #region SingleOrDefaultAsync
 //Eğer ki, sorgu neticesinde birden fazla veri geliyorsa exception fırlatır, hiç veri gelmiyorsa null döner.
 #region Tek Kayıt Geldiğinde
-//var urun = await context.Urunler.SingleOrDefaultAsync(u => u.Id == 55);
+var product20 = await context.Products.SingleOrDefaultAsync(u => u.ProductId == 55);
 #endregion
 #region Hiç Kayıt Gelmediğinde
-//var urun = await context.Urunler.SingleOrDefaultAsync(u => u.Id == 5555);
+var product21 = await context.Products.SingleOrDefaultAsync(u => u.ProductId == 5555);
 #endregion
 #region Çok Kayıt Geldiğinde
-//var urun = await context.Urunler.SingleOrDefaultAsync(u => u.Id > 55);
+var product22 = await context.Products.SingleOrDefaultAsync(u => u.ProductId > 55);
 #endregion
 #endregion
 
@@ -191,26 +191,26 @@ var products17 = await context.Products.OrderByDescending(u => u.ProductId).Then
 #region FirstAsync
 //Sorgu neticesinde elde edilen verilerden ilkini getirir. Eğer ki hiç veri gelmiyorsa hata fırlatır.
 #region Tek Kayıt Geldiğinde
-//var urun = await context.Urunler.FirstAsync(u => u.Id == 55);
+var product23 = await context.Products.FirstAsync(u => u.ProductId == 55);
 #endregion
 #region Hiç Kayıt Gelmediğinde
-//var urun = await context.Urunler.FirstAsync(u => u.Id == 5555);
+var product24 = await context.Products.FirstAsync(u => u.ProductId == 5555);
 #endregion
 #region Çok Kayıt Geldiğinde
-//var urun = await context.Urunler.FirstAsync(u => u.Id > 55);
+var product25 = await context.Products.FirstAsync(u => u.ProductId > 55);
 #endregion
 #endregion
 
 #region FirstOrDefaultAsync
 //Sorgu neticesinde elde edilen verilerden ilkini getirir. Eğer ki hiç veri gelmiyorsa null değerini döndürür.
 #region Tek Kayıt Geldiğinde
-//var urun = await context.Urunler.FirstOrDefaultAsync(u => u.Id == 55);
+var product26 = await context.Products.FirstOrDefaultAsync(u => u.ProductId == 55);
 #endregion
 #region Hiç Kayıt Gelmediğinde
-//var urun = await context.Urunler.FirstOrDefaultAsync(u => u.Id == 5555);
+var product27 = await context.Products.FirstOrDefaultAsync(u => u.ProductId == 5555);
 #endregion
 #region Çok Kayıt Geldiğinde
-//var urun = await context.Urunler.FirstAsync(u => u.Id > 55);
+var product28 = await context.Products.FirstAsync(u => u.ProductId > 55);
 #endregion
 #endregion
 
@@ -220,11 +220,12 @@ var products17 = await context.Products.OrderByDescending(u => u.ProductId).Then
 
 #region FindAsync
 //Find fonksiyonu, primary key kolonuna özel hızlı bir şekilde sorgulama yapmamızı sağlayan bir fonksiyondur.
-//Urun urun = await context.Urunler.FirstOrDefaultAsync(u => u.Id == 55);
-//Urun urun = await context.Urunler.FindAsync(55);
+Product? product29 = await context.Products.FirstOrDefaultAsync(u => u.ProductId == 55);
+Product? product32 = await context.Products.FindAsync(keyValues:55);
 
 #region Composite Primary key Durumu
-//UrunParca u = await context.UrunParca.FindAsync(2, 5);
+
+
 #endregion
 #endregion
 
