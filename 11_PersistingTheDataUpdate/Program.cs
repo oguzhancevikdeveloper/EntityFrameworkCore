@@ -65,5 +65,5 @@ foreach (var item in products)
     item.ProductName += "*";
 }
 
-await _context4.SaveChangesAsync();  // !! savechanges foreach dışında kullanmak kritik.
+await _context4.SaveChangesAsync();  // !! savechanges foreach dışında kullanmak kritik. farkettiysen _contex.Update(product) kullanamdık gerek yok :())).
 #endregion
