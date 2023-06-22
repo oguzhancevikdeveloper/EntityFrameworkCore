@@ -10,7 +10,7 @@ var products = await context.Products.ToListAsync();
 #endregion
 #region Query Syntax
 var products2 = await (from urun7 in context.Products
-                      select urun7).ToListAsync();
+                       select urun7).ToListAsync();
 #endregion
 #endregion
 
@@ -21,16 +21,22 @@ var products3 = await context.Products.ToListAsync();
 #endregion
 #region Query Syntax
 var products4 = await (from urun2 in context.Products
-select urun2).ToListAsync();
+                       select urun2).ToListAsync();
 #endregion
+
+
+
+
+
+
 #endregion
 
 int urunId = 5;
 string urunAdi = "2";
 
 var products5 = from urun3 in context.Products
-              where urun3.ProductId > urunId && urun3.ProductName.Contains(urunAdi)
-              select urun3;
+                where urun3.ProductId > urunId && urun3.ProductName.Contains(urunAdi)
+                select urun3;
 
 urunId = 200;
 urunAdi = "4";
@@ -78,9 +84,9 @@ var products6 = context.Products.ToListAsync();
 #endregion
 #region Query Syntax
 var products7 = (from product in context.Products
-              select product).ToListAsync();
+                 select product).ToListAsync();
 var products8 = from product in context.Products
-              select product;
+                select product;
 Thread.Sleep(3000);
 var datas = await products8.ToListAsync();
 #endregion
@@ -91,12 +97,12 @@ var datas = await products8.ToListAsync();
 
 #region Method Syntax
 var productId = 15;
-var products9 =  context.Products.FirstOrDefaultAsync(u => u.ProductId.Equals(productId));
+var products9 = context.Products.FirstOrDefaultAsync(u => u.ProductId.Equals(productId));
 Console.WriteLine(products9.Result.ProductName);
 productId = 18;
 Console.WriteLine(products9.Result.ProductName);
 
-var _products9 =  context.Products.Where(u => u.ProductId > 10);
+var _products9 = context.Products.Where(u => u.ProductId > 10);
 Console.WriteLine(_products9.FirstOrDefault(x => x.ProductId.Equals(productId)).ProductName);
 productId = 22;
 Console.WriteLine(_products9.FirstOrDefault(x => x.ProductId.Equals(productId)).ProductName);
@@ -107,8 +113,8 @@ Console.WriteLine();
 #endregion
 #region Query Syntax
 var products11 = from urun5 in context.Products
-              where urun5.ProductId > 500 && urun5.ProductName.EndsWith("A")
-              select urun5;
+                 where urun5.ProductId > 500 && urun5.ProductName.EndsWith("A")
+                 select urun5;
 var data = await products11.ToListAsync();
 Console.WriteLine();
 #endregion
@@ -122,9 +128,9 @@ var products12 = context.Products.Where(u => u.ProductId > 500 || u.ProductName.
 #endregion
 #region Query Syntax
 var products13 = from product in context.Products
-               where product.ProductId > 500 || product.ProductName.StartsWith("2")
-               orderby product.ProductName
-               select product;
+                 where product.ProductId > 500 || product.ProductName.StartsWith("2")
+                 orderby product.ProductName
+                 select product;
 #endregion
 
 await products12.ToListAsync();
@@ -148,8 +154,8 @@ var products15 = await context.Products.OrderByDescending(u => u.UnitPrice).ToLi
 #endregion
 #region Query Syntax
 var products16 = await (from product in context.Products
-                     orderby product.ProductName descending
-                     select product).ToListAsync();
+                        orderby product.ProductName descending
+                        select product).ToListAsync();
 #endregion
 #endregion
 
@@ -222,7 +228,7 @@ var product28 = await context.Products.FirstAsync(u => u.ProductId > 55);
 //Find fonksiyonu, primary key kolonuna özel hızlı bir şekilde sorgulama yapmamızı sağlayan bir fonksiyondur. 
 // Hızlı yapıyor çünkü contexten önce memorye bakıyor.
 Product? product29 = await context.Products.FirstOrDefaultAsync(u => u.ProductId == 55);
-Product? product32 = await context.Products.FindAsync(keyValues:55);
+Product? product32 = await context.Products.FindAsync(keyValues: 55);
 
 #region Composite Primary key Durumu
 Product? product33 = await context.Products.FindAsync(4, 2);
@@ -248,74 +254,74 @@ var product35 = await context.Products.OrderBy(u => u.UnitPrice).LastOrDefaultAs
 #region Diğer Sorgulama Fonksiyonları
 #region CountAsync
 //Oluşturulan sorgunun execute edilmesi neticesinde kaç adet satırın elde edileceğini sayısal olarak(int) bizlere bildiren fonksiyondur.
-//var urunler = (await context.Urunler.ToListAsync()).Count();
-//var urunler = await context.Urunler.CountAsync();
+var product36 = (await context.Products.ToListAsync()).Count();
+var product37 = await context.Products.CountAsync();
 #endregion
-  
+
 #region LongCountAsync
-//Oluşturulan sorgunun execute edilmesi neticesinde kaç adet satırın elde edileceğini sayısal olarak(long) bizlere bildiren fonksiyondur.
-//var urunler = await context.Urunler.LongCountAsync(u => u.Fiyat > 5000);
+//Oluşturulan sorgunun execute edilmesi neticesinde kaç adet satırın elde edileceğini sayısal olarak(long) bizlere bildiren fonksiyondur. Büyük datalar için aslında, temel olarak count ile aynı.
+var product38 = await context.Products.LongCountAsync(u => u.UnitPrice > 5000);
 #endregion
 
 #region AnyAsync
 //Sorgu neticesinde verinin gelip gelmediğini bool türünde dönen fonksiyondur. 
-//var urunler = await context.Urunler.Where(u => u.UrunAdi.Contains("1")).AnyAsync();
-//var urunler = await context.Urunler.AnyAsync(u => u.UrunAdi.Contains("1"));
+var product39 = await context.Products.Where(u => u.ProductName.Contains("1")).AnyAsync();
+var product40 = await context.Products.AnyAsync(u => u.ProductName.Contains("1"));
 #endregion
 
 #region MaxAsync
 //Verilen kolondaki max değeri getirir.
-//var fiyat = await context.Urunler.MaxAsync(u => u.Fiyat);
+var product41 = await context.Products.MaxAsync(u => u.UnitPrice);
 #endregion
 
 #region MinAsync
 //Verilen kolondaki min değeri getirir.
-//var fiyat = await context.Urunler.MinAsync(u => u.Fiyat);
+var product42 = await context.Products.MinAsync(u => u.UnitPrice);
 #endregion
 
 #region Distinct
 //Sorguda mükerrer kayıtlar varsa bunları tekilleştiren bir işleve sahip fonksiyondur.
-//var urunler = await context.Urunler.Distinct().ToListAsync();
+var product43 = await context.Products.Distinct().ToListAsync();
 #endregion
 
 #region AllAsync
 //Bir sorgu neticesinde gelen verilerin, verilen şarta uyup uymadığını kontrol etmektedir. Eğer ki tüm veriler şarta uyuyorsa true, uymuyorsa false döndürecektir.
-//var m = await context.Urunler.AllAsync(u => u.Fiyat < 15000);
-//var m = await context.Urunler.AllAsync(u => u.UrunAdi.Contains("a"));
+var m = await context.Products.AllAsync(u => u.UnitPrice < 15000);
+var m1 = await context.Products.AllAsync(u => u.ProductName.Contains("a"));
 #endregion
 
 #region SumAsync
 //Vermiş olduğumuz sayısal proeprtynin toplamını alır.
-//var fiyatToplam = await context.Urunler.SumAsync(u => u.Fiyat);
+var fiyatToplam = await context.Products.SumAsync(u => u.UnitPrice);
 #endregion
 
 #region AverageAsync
 //Vermiş olduğumuz sayısal proeprtynin aritmatik ortalamasını alır.
-//var aritmatikOrtalama = await context.Urunler.AverageAsync(u => u.Fiyat);
+var aritmatikOrtalama = await context.Products.AverageAsync(u => u.UnitPrice);
 #endregion
 
 #region Contains
 //Like '%...%' sorgusu oluşturmamızı sağlar.
-//var urunler = await context.Urunler.Where(u => u.UrunAdi.Contains("7")).ToListAsync();
+var product44 = await context.Products.Where(u => u.ProductName.Contains("7")).ToListAsync();
 #endregion
 
 #region StartsWith
 //Like '...%' sorgusu oluşturmamızı sağlar.
-//var urunler = await context.Urunler.Where(u => u.UrunAdi.StartsWith("7")).ToListAsync();
+var product45 = await context.Products.Where(u => u.ProductName.StartsWith("7")).ToListAsync();
 #endregion
 
 #region EndsWith
 //Like '%...' sorgusu oluşturmamızı sağlar.
-//var urunler = await context.Urunler.Where(u => u.UrunAdi.EndsWith("7")).ToListAsync();
+var product46 = await context.Products.Where(u => u.ProductName.EndsWith("7")).ToListAsync();
 #endregion
 #endregion
 
 #region Sorgu Sonucu Dönüşüm Fonksiyonları
-//Bu fonksiyonlar ile sorgu neticesinde elde edilen verileri isteğimiz doğrultuusnda farklı türlerde projecsiyon edebiliyoruz.
+//Bu fonksiyonlar ile sorgu neticesinde elde edilen verileri isteğimiz doğrultusunda farklı türlerde projecsiyon edebiliyoruz.
 
 #region ToDictionaryAsync
-//Sorgu neticesinde gelecek olan veriyi bir dictioanry olarak elde etmek/tutmak/karşılamak istiyorsak eğer kullanılır!
-//var urunler = await context.Urunler.ToDictionaryAsync(u => u.UrunAdi, u => u.Fiyat);
+//Sorgu neticesinde gelecek olan veriyi bir dictionary olarak elde etmek/tutmak/karşılamak istiyorsak eğer kullanılır!
+var product47 = await context.Products.ToDictionaryAsync(u => u.ProductName, u => u.UnitPrice);
 
 //ToList ile aynı amaca hizmet etmektedir. Yani, oluşturulan sorguyu execute edip neticesini alırlar.
 //ToList : Gelen sorgu neticesini entity türünde bir koleksiyona(List<TEntity>) dönüştürmekteyken,
@@ -325,66 +331,67 @@ var product35 = await context.Products.OrderBy(u => u.UnitPrice).LastOrDefaultAs
 #region ToArrayAsync
 //Oluşturulan sorguyu dizi olarak elde eder.
 //ToList ile muadil amaca hizmet eder. Yani sorguyu execute eder lakin gelen sonucu entity dizisi  olarak elde eder.
-//var urunler = await context.Urunler.ToArrayAsync();
+var product48 = await context.Products.ToArrayAsync();
 #endregion
 
 #region Select
 //Select fonksiyonunun işlevsel olarak birden fazla davranışı söz konusudur,
 //1. Select fonksiyonu, generate edilecek sorgunun çekilecek kolonlarını ayarlamamızı sağlamaktadır. 
 
-//var urunler = await context.Urunler.Select(u => new Urun
-//{
-//    Id = u.Id,
-//    Fiyat = u.Fiyat
-//}).ToListAsync();
+var product49 = await context.Products.Select(u => new Product
+{
+    ProductId = u.ProductId,
+    UnitPrice = u.UnitPrice
+}).ToListAsync();
 
 //2. Select fonksiyonu, gelen verileri farklı türlerde karşılamamızı sağlar. T, anonim
 
-//var urunler = await context.Urunler.Select(u => new 
-//{
-//    Id = u.Id,
-//    Fiyat = u.Fiyat
-//}).ToListAsync();
+var product50 = await context.Products.Select(u => new
+{
+    Id = u.ProductId,
+    Fiyat = u.UnitPrice
+}).ToListAsync();
 
 
-//var urunler = await context.Urunler.Select(u => new UrunDetay
-//{
-//    Id = u.Id,
-//    Fiyat = u.Fiyat
-//}).ToListAsync();
+var product51 = await context.Products.Select(u => new ProductDetail
+{
+    Id = u.ProductId,
+    Price = Convert.ToDecimal(u.UnitPrice)
+}).ToListAsync();
 
 #endregion
 
 #region SelectMany
 //Select ile aynı amaca hizmet eder. Lakin, ilişkisel tablolar neticesinde gelen koleksiyonel verileri de tekilleştirip projeksiyon etmemizi sağlar.
+// !! BAYAĞI ÖNEMLİ İYİ ÖĞREN İYİ ÖĞREN!!
+var product52 = await context.Products.Include(u => u.OrderDetails).SelectMany(u => u.OrderDetails, (u, o) => new
+{
+    u.ProductId,
+    u.UnitPrice,
+    o.Discount
+}).ToListAsync();
 
-//var urunler = await context.Urunler.Include(u => u.Parcalar).SelectMany(u => u.Parcalar, (u, p) => new
-//{
-//    u.Id,
-//    u.Fiyat,
-//    p.ParcaAdi
-//}).ToListAsync();
 #endregion
 #endregion
 
 #region GroupBy Fonksiyonu
 //Gruplama yapmamızı sağlayan fonksiyondur.
 #region Method Syntax
-//var datas = await context.Urunler.GroupBy(u => u.Fiyat).Select(group => new
-//{
-//    Count = group.Count(),
-//    Fiyat = group.Key
-//}).ToListAsync();
+var product53 = await context.Products.GroupBy(u => u.UnitPrice).Select(group => new
+{
+    Count = group.Count(),
+    Fiyat = group.Key,
+}).ToListAsync();
 #endregion
 #region Query Syntax
-//var datas = await (from urun in context.Urunler
-//                   group urun by urun.Fiyat
-//            into @group
-//                   select new
-//                   {
-//                       Fiyat = @group.Key,
-//                       Count = @group.Count()
-//                   }).ToListAsync();
+var _datas = await (from _product54 in context.Products
+                       group _product54 by _product54.UnitPrice
+            into @group
+                       select new
+                       {
+                           Fiyat = @group.Key,
+                           Count = @group.Count()
+                       }).ToListAsync();
 #endregion
 #endregion
 
@@ -392,12 +399,17 @@ var product35 = await context.Products.OrderBy(u => u.UnitPrice).LastOrDefaultAs
 //Bir sorgulama fonksiyonu felan değildir!
 //Sorgulama neticesinde elde edilen koleksiyonel veriler üzerinde iterasyonel olarak dönmemizi ve teker teker verileri elde edip işlemler yapabilmemizi sağlayan bir fonksiyondur. foreach döngüsünün metot halidir!
 
-//foreach (var item in datas)
-//{
+foreach (var item in _datas)
+{
 
-//}
-//datas.ForEach(x =>
-//{
+}
+_datas.ForEach(x =>
+{
 
-//});
+});
 #endregion
+public class ProductDetail
+{
+    public int Id { get; set; }
+    public decimal Price { get; set; }
+}
