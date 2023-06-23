@@ -24,10 +24,29 @@ var products4 = await (from urun2 in context.Products
                        select urun2).ToListAsync();
 #endregion
 
+var _product53 = await context.Products.GroupBy(u => u.UnitPrice).Select(group => new
+{
+    Count = group.Count(),
+    Fiyat = group.Key,
+}).ToListAsync();
 
+var orders = await context.Orders.GroupBy(o => o.CustomerId).Select(t => new
+{
+    CustomerId = t.Key,
+    Totalorders = t.Count()
+}).ToListAsync();
 
+var orders2 = await context.Orders.GroupBy(o => new { o.CustomerId, o.EmployeeId }).Select(t => new
+{
+    t.Key.CustomerId,
+    t.Key.EmployeeId,
+    TotalOrders = t.Count()
+}).ToListAsync();
 
-
+foreach (var item in orders2)
+{
+    Console.WriteLine(item.CustomerId + " : " + item.EmployeeId + " : " + item.TotalOrders);
+}
 
 #endregion
 

@@ -76,6 +76,25 @@ public partial class MasterContext : DbContext
     //Lazy Loading 
     //vb.
 
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+
+        var entries = ChangeTracker.Entries();
+        foreach (var entry in entries)
+        {
+            if(entry.State == EntityState.Added)
+            {
+
+            }
+            if(entry.State == EntityState.Modified) 
+            {
+
+            }
+        }
+
+        return base.SaveChangesAsync(cancellationToken);
+    }
+
 
 
     #region OnConfiguring İle Konfigürasyon Ayarlarını Gerçekleştirmek
