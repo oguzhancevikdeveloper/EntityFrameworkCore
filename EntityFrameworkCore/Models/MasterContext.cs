@@ -70,7 +70,12 @@ public partial class MasterContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=192.168.1.56;Database=master;User Id=frostline_adm;Password=dUT1@swl;TrustServerCertificate=True; Integrated Security =false;");
+    {
+        optionsBuilder.UseSqlServer("Server=192.168.1.56;Database=master;User Id=frostline_adm;Password=dUT1@swl;TrustServerCertificate=True; Integrated Security =false;");
+        //optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking); // Artık db den gelen datalar takip edilmiyor takip edilmesini istediğimiz yerde astracking kullanacağız.
+    }
+        
+
     //Provider
     //ConnectionString
     //Lazy Loading 

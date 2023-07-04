@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12_PersistingTheDataDelete"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "13_Querying", "13_Querying\13_Querying.csproj", "{1F5AFD2D-DBC3-4E57-99CB-6675D7157468}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14_ChangeTracker", "14_ChangeTracker\14_ChangeTracker.csproj", "{7C6C6CFE-0089-4B05-86BC-84B9B23B67F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "14_ChangeTracker", "14_ChangeTracker\14_ChangeTracker.csproj", "{7C6C6CFE-0089-4B05-86BC-84B9B23B67F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15_Tracking", "15_Tracking\15_Tracking.csproj", "{2ABEF608-6953-4FD2-8F8A-83BEBD4737B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7C6C6CFE-0089-4B05-86BC-84B9B23B67F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6C6CFE-0089-4B05-86BC-84B9B23B67F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6C6CFE-0089-4B05-86BC-84B9B23B67F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABEF608-6953-4FD2-8F8A-83BEBD4737B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABEF608-6953-4FD2-8F8A-83BEBD4737B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABEF608-6953-4FD2-8F8A-83BEBD4737B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABEF608-6953-4FD2-8F8A-83BEBD4737B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
