@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "15_Tracking", "15_Tracking\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "16_Relationships", "16_Relationships\16_Relationships.csproj", "{4B189B40-34D2-40D6-A905-A366101078DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One_To_One_Relationship", "One_To_One_Relationship\One_To_One_Relationship.csproj", "{A6DE4F73-2DA1-4D15-9FBA-507B81653F1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17_One_To_One_Relationship", "One_To_One_Relationship\17_One_To_One_Relationship.csproj", "{A6DE4F73-2DA1-4D15-9FBA-507B81653F1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
