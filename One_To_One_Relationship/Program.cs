@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Net;
 
 ESirketDbContext context = new();
 
@@ -11,7 +13,6 @@ ESirketDbContext context = new();
 //{
 //    public int Id { get; set; }
 //    public string Adi { get; set; }
-
 //    public CalisanAdresi CalisanAdresi { get; set; }
 //}
 //class CalisanAdresi
@@ -19,7 +20,6 @@ ESirketDbContext context = new();
 //    public int Id { get; set; }
 //    public int CalisanId { get; set; }
 //    public string Adres { get; set; }
-
 //    public Calisan Calisan { get; set; }
 //}
 #endregion
@@ -37,7 +37,7 @@ ESirketDbContext context = new();
 //}
 //class CalisanAdresi
 //{
-//    [Key, ForeignKey(nameof(Calisan))]
+//    [Key, ForeignKey(nameof(Calisan))] // aydınladım resmen, çok ama çok ama çok öenmli dikkaet et. 
 //    public int Id { get; set; }
 //    public string Adres { get; set; }
 
@@ -47,25 +47,25 @@ ESirketDbContext context = new();
 #region Fluent API
 //Navigation Proeprtyler tanımlanmalı!
 //Fleunt API yönteminde entity'ler arasındaki ilişki context sınıfı içerisinde OnModelCreating fonksiyonun override edilerek metotlar aracılığıyla tasarlanması gerekmektedir. Yani tüm sorumluluk bu fonksiyon içerisindeki çalışmalardadır.
-class Calisan
+public class Person
 {
     public int Id { get; set; }
-    public string Adi { get; set; }
-
-    public CalisanAdresi CalisanAdresi { get; set; }
+    public string Name { get; set; }
+    public Address Address { get; set; }
 }
-class CalisanAdresi
+public class Address
 {
     public int Id { get; set; }
-    public string Adres { get; set; }
+    public string Street { get; set; }
+    public string City { get; set; }
 
-    public Calisan Calisan { get; set; }
+    public Person Person { get; set; }
 }
 #endregion
 class ESirketDbContext : DbContext
 {
-    public DbSet<Calisan> Calisanlar { get; set; }
-    public DbSet<CalisanAdresi> CalisanAdresleri { get; set; }
+    public DbSet<Person> Calisanlar { get; set; }
+    public DbSet<Address> CalisanAdresleri { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("Server=localhost, 1433;Database=ESirketDB;User ID=SA;Password=1q2w3e4r+!");
@@ -73,13 +73,15 @@ class ESirketDbContext : DbContext
     //Model'ların(entity) veritabanında generate edilecek yapıları bu fonksiyonda içerisinde konfigüre edilir
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CalisanAdresi>()
+
+        modelBuilder.Entity<Person>()
+            .HasOne(p => p.Address)
+            .WithOne(a => a.Person)
+            .HasForeignKey<Address>(a => a.Id);
+
+        modelBuilder.Entity<Address>()
             .HasKey(c => c.Id);
 
-        modelBuilder.Entity<Calisan>()
-             .HasOne(c => c.CalisanAdresi)
-             .WithOne(c => c.Calisan)
-             .HasForeignKey<CalisanAdresi>(c => c.Id);
     }
 }
 
