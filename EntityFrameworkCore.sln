@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20_Saving_Related_Data", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "21_Update_Related_Data", "21_Update_Related_Data\21_Update_Related_Data.csproj", "{47C6063B-F628-46E0-BBE5-03FCA39EA546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "22_Backing_Fields", "22_Backing_Fields\22_Backing_Fields.csproj", "{E1A201A0-6801-47DD-8F6C-89CA890F180E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "22_Backing_Fields", "22_Backing_Fields\22_Backing_Fields.csproj", "{E1A201A0-6801-47DD-8F6C-89CA890F180E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "23_Shadow_Property", "23_Shadow_Property\23_Shadow_Property.csproj", "{3C70137D-9BD5-4B1C-B68F-FBE5F64B38CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{E1A201A0-6801-47DD-8F6C-89CA890F180E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A201A0-6801-47DD-8F6C-89CA890F180E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A201A0-6801-47DD-8F6C-89CA890F180E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C70137D-9BD5-4B1C-B68F-FBE5F64B38CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C70137D-9BD5-4B1C-B68F-FBE5F64B38CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C70137D-9BD5-4B1C-B68F-FBE5F64B38CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C70137D-9BD5-4B1C-B68F-FBE5F64B38CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
