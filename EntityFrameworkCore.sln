@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "23_Shadow_Property", "23_Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "24_EF_Core_Configurations", "24_EF_Core_Configurations\24_EF_Core_Configurations.csproj", "{540EED4C-38D5-4372-8429-B76DA4CB7B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "25_Generated_Values", "25_Generated_Values\25_Generated_Values.csproj", "{263E7919-EA4E-4DCB-A84D-B6357F80FC99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "25_Generated_Values", "25_Generated_Values\25_Generated_Values.csproj", "{263E7919-EA4E-4DCB-A84D-B6357F80FC99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "26_Data_Seeding", "26_Data_Seeding\26_Data_Seeding.csproj", "{A2BC378C-075B-4D6F-9778-F4EFC60756C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{263E7919-EA4E-4DCB-A84D-B6357F80FC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263E7919-EA4E-4DCB-A84D-B6357F80FC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{263E7919-EA4E-4DCB-A84D-B6357F80FC99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BC378C-075B-4D6F-9778-F4EFC60756C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BC378C-075B-4D6F-9778-F4EFC60756C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BC378C-075B-4D6F-9778-F4EFC60756C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BC378C-075B-4D6F-9778-F4EFC60756C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
